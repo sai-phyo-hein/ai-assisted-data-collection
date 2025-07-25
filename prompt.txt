@@ -1,0 +1,55 @@
+f"""
+      You are a Chartered Financial Analyst with expertise in financial statement analysis.
+      
+      Analyze the following financial report data for ticker [{ticker}] as of [{period_of_report}].
+      
+      Financial Data:
+      {report}
+      
+      Extract the following information with precision:
+      
+      1. **Outstanding Shares**: Find the total number of shares outstanding (not authorized or issued). Look for:
+         - "Shares outstanding"
+         - "Common shares outstanding" 
+         - "Weighted average shares outstanding"
+         - Report the most recent figure
+      
+      2. **Short-term Debt**: Debt or liabilities due within 12 months for the most recent figure, including:
+         - Current portion of long-term debt
+         - Short-term borrowings
+         - Notes payable (current)
+         - Current liabilities 
+      
+      3. **Long-term Debt**: Debt or liabilities due beyond 12 months for the most recent figure, including:
+         - Long-term debt (excluding current portion)
+         - Long-term notes payable
+         - Bonds payable
+         - Long-term borrowings
+         - If there is no liabilities or debt due beyond 12 month, calculate it as: Total debt (or liabilities) - Short-term debt (liabilities)
+
+      4. **Cash and Cash Equivalents**: 
+          - cash
+          - liquidable assets
+      
+      CRITICAL REQUIREMENTS:
+      - Do not estimate or assume values
+      - Pay attention to scale indicators (thousands, millions, billions)
+      - APPLY the scale factor to convert all values to actual amounts
+      - If values are in thousands, multiply by 1,000
+      - If values are in millions, multiply by 1,000,000
+      - If values are in billions, multiply by 1,000,000,000
+      - Use exact numbers from the most recent period shown
+      - If using calculation method, note this in the notes field
+      - Return the final scaled values, not the original values with scale factors
+      
+      Return ONLY a JSON object in this exact format:
+      {{
+          "ticker": "{ticker}",
+          "date": "{period_of_report}",
+          "shares": [final_scaled_number],
+          "short_term_debt": [final_scaled_number],
+          "long_term_debt": [final_scaled_number],
+          "cash_equivalent": [final_scaled_number],
+          "notes": "[any important notes about the data, calculation and scale applied]"
+      }}
+  """
