@@ -7,7 +7,7 @@ As part of my self-study, this project is attempted to learn prompt configuratio
 
 Context length and cost of the available AI models become the obstacles for this step. Using API provider burns the budget to zero just after processing ~50 files: each file has at least 3 pages of text. Thus, locally deployable small models were the option to proceed. Firstly, some models were tested without considering the the context length and the resulting numbers were inaccurate when human-checked, and inconsistent given that the same optimized prompt was used for each re-run. 
 
-Finally, large context length models like mistral-nemo:12b and gemma3:4b both of which had (128K context length) were applied to extract the data stored in attach database file. Ollama was used to host those models. The text files were preprocessed with keywords to reduce number of lines from 8~10 pages to 3~4 pages. The whole contents of the remaining lines were fed to the model chatbox using the prompt configured as in prompt.txt attached. 
+Finally, large context length models like mistral-nemo:12b and gemma3:12b both of which had (128K context length) were applied to extract the data stored in attach database file. Ollama was used to host those models. The text files were preprocessed with keywords to reduce number of lines from 8 ~ 10 pages to 3 ~ 4 pages. The whole contents of the remaining lines were fed to the model chatbox using the prompt configured as in prompt.txt attached. 
 
 ### Database file
 The database file consists of these tables: 
